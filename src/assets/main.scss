@@ -1,0 +1,10 @@
+@import 'reset.scss', 'base.scss';
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  @include reset-main;
+}
