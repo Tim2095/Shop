@@ -92,7 +92,5 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: gray;
-  opacity: 0.2;
 }
 </style>
