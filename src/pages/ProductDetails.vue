@@ -1,8 +1,8 @@
 <template>
+  <div class="spinner" v-if="isLoading">
+    <base-spinner></base-spinner>
+  </div>
   <div class="product-container" v-for="product in chosenProductData">
-    <div class="spinner" v-if="isLoading">
-      <base-spinner></base-spinner>
-    </div>
     <h2>{{ product.title }}</h2>
     <img :src="product.image" alt="" />
     <p>{{ product.price }} $</p>
@@ -78,11 +78,21 @@ const chosenProductData = computed(function () {
   button {
     padding: 1rem 2rem;
     cursor: pointer;
+    margin-bottom: 1rem;
   }
 }
 
 img {
   max-width: 250px;
   max-height: 250px;
+}
+
+.spinner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+  opacity: 0.2;
 }
 </style>

@@ -1,4 +1,7 @@
 <template>
+  <div class="spinner" v-if="store.isLoading">
+    <base-spinner></base-spinner>
+  </div>
   <div>
     <product-item
       v-for="product in storeItems"
@@ -16,8 +19,10 @@ import { onMounted } from 'vue'
 
 import ProductItem from '../components/ProductItem.vue'
 import { useProductStore } from '../stores/product.js'
+import BaseSpinner from '../ui/BaseSpinner.vue'
 
 const store = useProductStore()
+console.log(store.isLoading)
 onMounted(() => {
   store.loadProduct()
 })
@@ -34,5 +39,13 @@ div {
   max-width: 120rem;
   margin: 0 auto;
   padding: 1rem;
+}
+
+.spinner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 </style>

@@ -3,7 +3,6 @@
     <nav class="nav">
       <ul class="ul">
         <div class="main-links">
-          <li><router-link to="/home">Home</router-link></li>
           <li><router-link to="/products">Products</router-link></li>
           <li><router-link to="/contact">Contact Us</router-link></li>
           <li><router-link to="/about">About</router-link></li>
