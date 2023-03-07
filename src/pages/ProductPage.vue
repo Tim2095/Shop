@@ -22,7 +22,7 @@ import { useProductStore } from '../stores/product.js'
 import BaseSpinner from '../ui/BaseSpinner.vue'
 
 const store = useProductStore()
-console.log(store.isLoading)
+
 onMounted(() => {
   store.loadProduct()
 })

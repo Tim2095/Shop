@@ -1,9 +1,6 @@
 <template>
-  <div v-for="pr in st">
-
-    <div>{{ pr.name }}</div>
-    <div>{{ pr.price }}</div>
-
+  <div>
+    Cart
   </div>
 </template>
 
@@ -21,5 +18,6 @@ const st = JSON.parse(localStorage.getItem('product'))
 <style scoped>
 div {
   height: 100vh;
+  
 }
 </style>
