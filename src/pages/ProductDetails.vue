@@ -1,13 +1,16 @@
 <template>
-  <div class="spinner" v-if="isLoading">
-    <base-spinner></base-spinner>
-  </div>
-  <div class="product-container" v-for="product in chosenProductData">
-    <h2>{{ product.title }}</h2>
-    <img :src="product.image" alt="" />
-    <p>{{ product.price }} $</p>
-    <div>{{ product.description }}</div>
-    <button @click="store.addProduct(product.id)">Add to cart</button>
+  <div>
+    <div class="spinner" v-if="isLoading">
+      <base-spinner></base-spinner>
+    </div>
+
+    <div class="product-container" v-for="product in chosenProductData" :key="product.id">
+      <h2>{{ product.title }}</h2>
+      <img :src="product.image" alt="" />
+      <p>{{ product.price }} $</p>
+      <div>{{ product.description }}</div>
+      <button @click="store.addProduct(product.id)">Add to cart</button>
+    </div>
   </div>
 </template>
 

@@ -18,6 +18,5 @@ const st = JSON.parse(localStorage.getItem('product'))
 <style scoped>
 div {
   height: 100vh;
-  
 }
 </style>

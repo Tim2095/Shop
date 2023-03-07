@@ -6,24 +6,22 @@ export const useProductStore = defineStore('products', () => {
   const chosenProducts = ref([])
   const cartCounter = ref(null)
   const isLoading = ref(false)
- 
-
 
   async function loadProduct() {
     isLoading.value = true
-    
+
     const response = await fetch('https://fakestoreapi.com/products')
     const responseData = await response.json()
 
-    isLoading.value = false 
-  
-    products.value.push(...responseData)
+    isLoading.value = false
 
+    if (products.value.length === 0) {
+      products.value.push(...responseData)
+    }
 
     if (!response.ok) {
       const error = new Error(responseData.messagec || 'Failed to fetch the products requiest')
-    } 
-   
+    }
   }
 
   const addProduct = function (productId) {
@@ -41,7 +39,6 @@ export const useProductStore = defineStore('products', () => {
       chosenProducts.value.push(selectedProduct)
       localStorage.setItem('product', JSON.stringify(chosenProducts.value))
     }
-      
   }
   return { products, loadProduct, addProduct, cartCounter, isLoading }
 })
