@@ -22,10 +22,6 @@ onMounted(() => {
   store.loadProduct()
 })
 
-
-
-
-
 const storeItems = store.products
 </script>
 
@@ -37,5 +33,6 @@ div {
   justify-items: center;
   max-width: 120rem;
   margin: 0 auto;
+  padding: 1rem;
 }
 </style>
