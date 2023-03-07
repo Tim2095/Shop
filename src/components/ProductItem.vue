@@ -1,10 +1,12 @@
 <template>
   <div class="products-content">
     <div class="img-cnt">
-      <img :src="image" alt="product image" />
+      <router-link :to="linkProductDetails">
+        <img :src="image" alt="product image" />
+      </router-link>
     </div>
     <div class="products-info">
-      <router-link :to='linkProductDetails'>{{ title }}</router-link>
+      <router-link :to="linkProductDetails">{{ title }}</router-link>
       <p>{{ price }}</p>
     </div>
 
@@ -13,16 +15,14 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed } from 'vue'
 import { useProductStore } from '../stores/product'
-const props = defineProps(['title', 'price', 'image', 'id',])
+const props = defineProps(['title', 'price', 'image', 'id'])
 const store = useProductStore()
 
-const linkProductDetails = computed(function() {
+const linkProductDetails = computed(function () {
   return '/products' + '/' + props.id
 })
-
-
 </script>
 
 <style lang="scss" scoped>
