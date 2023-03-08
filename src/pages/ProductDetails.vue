@@ -52,6 +52,28 @@ const chosenProductData = computed(function () {
 </script>
 
 <style lang="scss" scoped>
+// .v-enter-from {
+//   transform: translateY(100px);
+// }
+
+// .v-enter-active {
+//   transition: all 0.9s ease-in;
+// }
+
+// .v-enter-to {
+//   transform: translateY(0);
+// }
+
+// .v-enter-from {
+//   opacity: 0;
+//   transform: translateY(300px);
+// }
+
+// .v-enter-active {
+//   transition: all 0.9s ease-out;
+// }
+
+
 .product-container {
   max-width: 100rem;
   margin: 0 auto;

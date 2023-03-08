@@ -1,17 +1,20 @@
 <template>
-  <div class="spinner" v-if="store.isLoading">
-    <base-spinner></base-spinner>
-  </div>
-  <div>
-    <product-item
+  <span>
+
+    <div class="spinner" v-if="store.isLoading">
+      <base-spinner></base-spinner>
+    </div>
+    <div>
+      <product-item
       v-for="product in storeItems"
       :key="product.id"
       :id="product.id"
       :image="product.image"
       :title="product.title"
       :price="product.price"
-    ></product-item>
-  </div>
+      ></product-item>
+    </div>
+  </span>
 </template>
 
 <script setup>
@@ -45,7 +48,8 @@ div {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
+
+
 </style>

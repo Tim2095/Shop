@@ -1,17 +1,18 @@
 <template>
-  <div class="products-content">
-    <div class="img-cnt">
-      <router-link :to="linkProductDetails">
-        <img :src="image" alt="product image" />
-      </router-link>
-    </div>
-    <div class="products-info">
-      <router-link :to="linkProductDetails">{{ title }}</router-link>
-      <p>{{ price }}</p>
-    </div>
 
-    <button @click="store.addProduct(id)">Buy</button>
-  </div>
+    <div class="products-content">
+      <div class="img-cnt">
+        <router-link :to="linkProductDetails">
+          <img :src="image" alt="product image" />
+        </router-link>
+      </div>
+      <div class="products-info">
+        <router-link :to="linkProductDetails">{{ title }}</router-link>
+        <p>{{ price }}</p>
+      </div>
+      <button @click="store.addProduct(id)">Buy</button>
+   
+    </div>
 </template>
 
 <script setup>
@@ -26,6 +27,7 @@ const linkProductDetails = computed(function () {
 </script>
 
 <style lang="scss" scoped>
+
 img {
   width: 150px;
 }
@@ -66,4 +68,6 @@ img {
     color: #000;
   }
 }
+
+
 </style>
