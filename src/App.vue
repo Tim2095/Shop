@@ -13,7 +13,6 @@
 
 <style lang="scss">
 .route-enter-from {
-
   transform: translateY(-100px);
 }
 
