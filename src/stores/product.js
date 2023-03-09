@@ -1,5 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { getProductsList } from '../api/products.js'
 
 export const useProductStore = defineStore('products', () => {
   const products = ref([])
@@ -8,19 +9,23 @@ export const useProductStore = defineStore('products', () => {
   const isLoading = ref(false)
 
   async function loadProduct() {
-    isLoading.value = true
+    try {
+      isLoading.value = true
 
-    const response = await fetch('https://fakestoreapi.com/products')
-    const responseData = await response.json()
+      const { response, data } = await getProductsList()
 
-    isLoading.value = false
+      isLoading.value = false
 
-    if (products.value.length === 0) {
-      products.value.push(...responseData)
-    }
+      if (products.value.length === 0) {
+        products.value.push(...data)
+      }
 
-    if (!response.ok) {
-      const error = new Error(responseData.messagec || 'Failed to fetch the products requiest')
+      if (!response.ok) {
+        const error = new Error(data.messagec || 'Failed to fetch the products requiest')
+      }
+    } catch (error) {
+      console.error(error)
+      // ... error
     }
   }
 
