@@ -1,11 +1,9 @@
 <template>
   <div>
-    <!-- <div class="spinner" v-if="isLoading">
+    <div class="spinner" v-if="isLoading">
       <base-spinner></base-spinner>
-    </div> -->
-    
-    <div class="product-container" v-for="product in productDetails" :key="product.id">
-      <h1>{{ product }}</h1>
+    </div>
+    <div class="product-container">
       <h2>{{ product.title }}</h2>
 
       <img :src="product.image" alt="" />
@@ -17,40 +15,26 @@
 </template>
 
 <script setup>
-import BaseSpinner from '../ui/BaseSpinner.vue'
+import { computed, ref, onBeforeMount } from 'vue'
 import { useProductStore } from '../stores/product'
-import { computed, ref } from 'vue'
-// import { defineProps } from 'vue'
+import { getProductById } from '../api/products'
+import BaseSpinner from '../ui/BaseSpinner.vue'
 
 const props = defineProps(['productId'])
 const store = useProductStore()
+const isLoading = ref(false)
 
-const productDetails = computed(function () {
-  console.log(store.products)
-  return store.products.find((product) => product.id === +props.productId)
-})
+const product = ref(null)
 
-// const store = useProductStore()
-// const isLoading = ref(false)
-// const props = defineProps(['productId'])
-// const chosenProduct = ref([])
-// async function loadCurrentProduct() {
-//   try {
-//     isLoading.value = true
-//     const response = await fetch('https://fakestoreapi.com/products')
-//     const responseData = await response.json()
-//     isLoading.value = false
-//     const chosenProductData = responseData.find((pr) => pr.id === +props.productId)
-//     chosenProduct.value.push(chosenProductData)
-//   } catch (err) {
-//     err = 'Failed to find product'
-//     alert(err)
-//   }
-// }
-// loadCurrentProduct()
-
-const chosenProductData = computed(function () {
-  return chosenProduct.value
+onBeforeMount(async () => {
+  isLoading.value = true
+  try {
+    const { data } = await getProductById(props.productId)
+    product.value = data
+  } catch (error) {
+    console.error(error)
+  }
+  isLoading.value = false
 })
 </script>
 
@@ -75,7 +59,6 @@ const chosenProductData = computed(function () {
 // .v-enter-active {
 //   transition: all 0.9s ease-out;
 // }
-
 
 .product-container {
   max-width: 100rem;
