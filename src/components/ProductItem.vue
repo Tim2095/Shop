@@ -1,6 +1,6 @@
 <template>
 
-    <div class="products-content">
+    <div class="products-content"> 
       <div class="img-cnt">
         <router-link :to="linkProductDetails">
           <img :src="image" alt="product image" />
@@ -16,7 +16,9 @@
 </template>
 
 <script setup>
+// import { useMotion } from '@vueuse/motion'
 import { computed } from 'vue'
+import { ref } from 'vue';
 import { useProductStore } from '../stores/product'
 const props = defineProps(['title', 'price', 'image', 'id'])
 const store = useProductStore()
@@ -24,6 +26,23 @@ const store = useProductStore()
 const linkProductDetails = computed(function () {
   return '/products' + '/' + props.id
 })
+
+const target = ref('div')
+
+
+// const motionInstance = useMotion(target, {
+//     initial: {
+//         opacity: 0,
+//         y: 100
+//     },
+//     enter: {
+//         opacity: 1,
+//         y: 0
+//     }
+//   })
+
+//   motionInstance()
+
 </script>
 
 <style lang="scss" scoped>

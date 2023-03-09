@@ -1,6 +1,5 @@
 <template>
   <span>
-
     <div class="spinner" v-if="store.isLoading">
       <base-spinner></base-spinner>
     </div>
