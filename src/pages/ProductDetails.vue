@@ -5,7 +5,6 @@
     </div>
     <div class="product-container">
       <h2>{{ product.title }}</h2>
-
       <img :src="product.image" alt="" />
       <p>{{ product.price }} $</p>
       <div>{{ product.description }}</div>
@@ -30,6 +29,7 @@ onBeforeMount(async () => {
   isLoading.value = true
   try {
     const { data } = await getProductById(props.productId)
+    console.log(data)
     product.value = data
   } catch (error) {
     console.error(error)

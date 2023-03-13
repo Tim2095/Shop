@@ -12,11 +12,12 @@ export const getProductsList = async () => {
 
 /**
  * Get product by id
- * @param {Number} id
+ * @param { Number} id
  * @returns {Promise<Array>}
  */
 export const getProductById = async (id) => {
   const response = await fetch(`${API_URL}/products/${id}`)
   const data = await response.json()
+
   return { response, data }
 }
